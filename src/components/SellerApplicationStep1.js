@@ -9,12 +9,11 @@ const SellerApplicationStep1 = ({
   portfolioLink, setPortfolioLink,
   hasOnlineStore, setHasOnlineStore,
   onlineStores, setOnlineStores,
-  authoredConfirmation, setAuthoredConfirmaton,
+  authoredConfirmation, setAuthoredConfirmation,
+  firstNameError, setFirstNameError,
+  lastNameError, setLastNameError,
+  shopCategoryError, setShopCategoryError,
   setStep }) => {
-
-  const [firstNameError, setFirstNameError] = useState(false)
-  const [lastNameError, setLastNameError] = useState(false)
-  const [shopCategoryError, setShopCategoryError] = useState(false)
 
   const StopCategoryOptions = [
     { value: 'photos', label: 'Photos' },
@@ -25,15 +24,10 @@ const SellerApplicationStep1 = ({
     { value: '3d', label: '3D' }
   ]
 
-
-  function setError(field) {
-
-  }
-
   function nextStep() {
-    firstName === '' ? setFirstNameError(true) : setFirstNameError(false)
-    lastName === '' ? setLastNameError(true) : setFirstNameError(false)
-    shopCategory === null ? setShopCategoryError(true) : setShopCategoryError(false)
+    firstName === '' ? setFirstNameError('Please enter your first name') : setFirstNameError('')
+    lastName === '' ? setLastNameError('Please enter your last name') : setFirstNameError('')
+    shopCategory === null ? setShopCategoryError('Please enter a shop category') : setShopCategoryError('')
     if(firstName !== '' && lastName !== '' && shopCategory !== null) {
       setStep(2)
     }
@@ -55,29 +49,58 @@ const SellerApplicationStep1 = ({
     
       <div className="form">
         <div className="name">
-          <Input label='First Name' type='text' value={firstName} setInput={setFirstName} />
-          { firstNameError ? <small className="error">Please enter your first name </small> : null } 
-
-          <Input label='Last Name' type='text' value={lastName} setInput={setLastName} />
-          { lastNameError ? <small className="error">Please enter your first name </small> : null } 
+          <Input 
+            label='First Name' 
+            type='text' 
+            value={firstName} 
+            setInput={setFirstName}
+            error={firstNameError}
+          />
+         
+          <Input 
+            label='Last Name' 
+            type='text' 
+            value={lastName} 
+            setInput={setLastName} 
+            error={lastNameError}
+          />
         </div>
 
-        <Input label='Shop Category' value={shopCategory} setInput={setShopCategory} options={StopCategoryOptions} />
-        { shopCategoryError ? <small className="error">Please enter a shop category</small> : null } 
+        <Input 
+          label='Shop Category' 
+          value={shopCategory} 
+          setInput={setShopCategory} 
+          options={StopCategoryOptions}
+          error={shopCategoryError}
+        />
 
-        <Input label='Portfolio Link' type='text' />
-        <input type="checkbox" 
-          value={authoredConfirmation} 
-          onChange={() => setAuthoredConfirmaton(authoredConfirmation ? false : true)} />
+        <Input 
+          label='Portfolio Link' 
+          type='text' 
+          value={portfolioLink} 
+          setInput={setPortfolioLink} 
+          placeholder={'mysite.com'} 
+        />
+       
+        { portfolioLink !== '' ?
+          <div>
+            <input type="checkbox" 
+              value={authoredConfirmation} 
+              onChange={() => setAuthoredConfirmation(authoredConfirmation ? false : true)} />
+            <span>Yes, I confirm that the content submitted is authored by me.</span>
+          </div> : null
+        }
 
+        <span>Do you already have an online store?</span>
         <div><input type="radio" value={true} checked={hasOnlineStore} onChange={e => setHasOnlineStore(e.target.checked)} /> Yes</div>
         <div><input type="radio" value={false} checked={!hasOnlineStore} onChange={e => setHasOnlineStore(!e.target.checked)} /> No</div>
 
         { hasOnlineStore ? 
-            <Input label='Online stores I sell on today' value={onlineStores} setInput={setOnlineStores} />
-         : null }
-         
-        <button onClick={() => nextStep()}>Next</button>
+          <Input type={'textarea'} label='Online stores I sell on today' value={onlineStores} setInput={setOnlineStores} placeholder={'Enter urls'} />
+         : null 
+        }
+
+        <button onClick={() => nextStep(2)}>Next</button>
 
       </div>
     </div>
