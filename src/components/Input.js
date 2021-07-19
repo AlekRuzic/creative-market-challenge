@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 const Input = ({ label, type, options, value, setInput, placeholder, error }) => {
 
   return (
-    <>
+    <div className="form-input">
       <label>{label}</label>
       { options 
-        ? <select onChange={e => setInput(e.target.value)}>
+        ? <select onChange={e => setInput(e.target.value)} style={{ color: value === null ? '#6E777D' : '#303538'}}>
             { value === null ? 
               <option value="" selected disabled hidden>{placeholder}</option> : null 
             }
@@ -20,6 +20,7 @@ const Input = ({ label, type, options, value, setInput, placeholder, error }) =>
         : type === 'textarea' ? 
         <textarea 
           value={value} 
+          rows="4"
           onChange={e => setInput(e.target.value)}
           placeHolder={placeholder ? placeholder : ''}
         />
@@ -32,7 +33,7 @@ const Input = ({ label, type, options, value, setInput, placeholder, error }) =>
           />
       }
       { error !== '' ? <small className="error">{error}</small> : null }
-    </>
+    </div>
   )
 }
 

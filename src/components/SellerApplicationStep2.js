@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Input from './Input';
+import '../App.scss';
 
 const SellerApplicationStep2 = ({ 
   perspectiveOnQuality, setPerspectiveOnQuality,
@@ -33,11 +34,11 @@ const SellerApplicationStep2 = ({
   ]
 
   return (
-    <div>
+    <div className="seller-application-form">
       <div className="form-header">
         <div className="title">
-          <div>Seller Application</div>
-          <div>Tell us a little about yourself</div>
+          <div className="seller-app">SELLER APPLICATION</div>
+          <div style={{ fontSize:'22px'}}>Tell us a little about yourself</div>
         </div>
         <div className="step">
           Step 2 of 2
@@ -53,6 +54,7 @@ const SellerApplicationStep2 = ({
           value={perspectiveOnQuality} 
           setInput={setPerspectiveOnQuality} 
           error={perspectiveOnQualityError}
+          placeholder={'Select Answer'}
         />
         
         <Input 
@@ -61,6 +63,7 @@ const SellerApplicationStep2 = ({
           value={sellerExperienceLevel} 
           setInput={setSellerExperienceLevel} 
           error={sellerExperienceLevelError}
+          placeholder={'Select Answer'}
         />
 
         <Input 
@@ -69,10 +72,13 @@ const SellerApplicationStep2 = ({
           value={businessMarketingUnderstanding} 
           setInput={setBusinessMarketingUnderstanding} 
           error={businessMarketingUnderstandingError}
+          placeholder={'Select Answer'}
         />
 
-        <div onClick={() => setStep(1)}>Back</div>
-        <button onClick={() => nextStep(3)}>Next</button>
+        <div className="button-div separated">
+          <div className="back" onClick={() => setStep(1)}>&#8249; Back</div>
+          <button onClick={() => nextStep(3)}>Next</button>
+        </div>
       </div>
     </div>
   )

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../App.css';
+import '../App.scss';
 
 import SellerApplicationStep1 from './SellerApplicationStep1';
 import SellerApplicationStep2 from './SellerApplicationStep2';
@@ -30,12 +30,13 @@ const SellerApplicationForm = () => {
   const [perspectiveOnQualityError, setPerspectiveOnQualityError] = useState('')
   const [sellerExperienceLevelError, setSellerExperienceLevelError] = useState('')
   const [businessMarketingUnderstandingError, setBusinessMarketingUnderstandingError] = useState('')
+  const [portfolioError, setPortfolioError] = useState('')
 
   // Go to next step, or submit form
   function nextStep(number) {
     if(number === 2) {
       firstName === '' ? setFirstNameError('Please enter your first name') : setFirstNameError('')
-      lastName === '' ? setLastNameError('Please enter your last name') : setFirstNameError('')
+      lastName === '' ? setLastNameError('Please enter your last name') : setLastNameError('')
       shopCategory === null ? setShopCategoryError('Please enter a shop category') : setShopCategoryError('')
       if(firstName !== '' && lastName !== '' && shopCategory !== null) {
         setStep(2)
@@ -63,7 +64,7 @@ const SellerApplicationForm = () => {
   } 
 
   return (
-    <div className="seller-application-form">
+    <div>
     {
       step === 1 ?
         <SellerApplicationStep1 {...{
@@ -71,6 +72,7 @@ const SellerApplicationForm = () => {
             lastName, setLastName, lastNameError, setLastNameError,
             shopCategory, setShopCategory, shopCategoryError, setShopCategoryError,
             portfolioLink, setPortfolioLink,
+            portfolioError, setPortfolioError,
             authoredConfirmation, setAuthoredConfirmation,
             hasOnlineStore, setHasOnlineStore,
             onlineStores, setOnlineStores,

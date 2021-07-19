@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import SellerApplicationForm from './components/SellerApplicationForm';
 
 function App() {

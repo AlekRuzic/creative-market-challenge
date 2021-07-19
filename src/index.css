@@ -1,3 +1,28 @@
+body {
+  margin:0;
+  padding:0;
+}
+
+.App {
+  margin:0;
+  padding:0;
+  height:100vh;
+  background: url('./assets/bg-pattern.png');
+  background-repeat: no-repeat;
+  background-size:100% 50%;
+  background-position: bottom;
+}
+
+.seller-application-form {
+  position: absolute;
+  width: 657px;
+  height: 664px;
+  left: 391px;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 10px rgba(226, 233, 238, 0.6);
+  border-radius: 8px;
+}
+
 .form {
   display:flex;
   flex-direction: column;
