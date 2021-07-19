@@ -5,7 +5,6 @@ const mysql = require('mysql2')
 const db = require('./models')
 
 const app = express()
-require('dotenv').config();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
@@ -33,7 +32,7 @@ app.post('/sellerapplication', (req, res) => {
     } = req.body;
   
     console.log(req.body);
-    
+
     db.SellerApplication.create({
       firstName, 
       lastName, 
