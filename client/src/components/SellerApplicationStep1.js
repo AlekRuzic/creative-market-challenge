@@ -111,7 +111,7 @@ const SellerApplicationStep1 = ({
           </div> : null
         }
 
-        <div class="online-store-check">
+        <div className="online-store-check">
           <label>Do you already have an online store?</label>
           <div><input type="radio" value={true} checked={hasOnlineStore} className="radio" onChange={e => setHasOnlineStore(e.target.checked)} /> Yes</div>
           <div><input type="radio" value={false} checked={!hasOnlineStore} className="radio" onChange={e => setHasOnlineStore(!e.target.checked)} /> No</div>

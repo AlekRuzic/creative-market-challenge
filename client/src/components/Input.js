@@ -11,8 +11,8 @@ const Input = ({ label, type, options, value, setInput, placeholder, error }) =>
               <option value="" selected disabled hidden>{placeholder}</option> : null 
             }
             {
-              options.map(option => {
-                return <option value={option.value} selected={value === option.value ? true : false}>{option.label}</option>
+              options.map((option, i) => {
+                return <option key={i} value={option.value} selected={value === option.value ? true : false}>{option.label}</option>
               })
             }
           </select>
@@ -22,14 +22,14 @@ const Input = ({ label, type, options, value, setInput, placeholder, error }) =>
           value={value} 
           rows="4"
           onChange={e => setInput(e.target.value)}
-          placeHolder={placeholder ? placeholder : ''}
+          placeholder={placeholder ? placeholder : ''}
         />
 
         : <input 
             type={type} 
             value={value} 
             onChange={e => setInput(e.target.value)}
-            placeHolder={placeholder ? placeholder : ''}
+            placeholder={placeholder ? placeholder : ''}
           />
       }
       { error !== '' ? <small className="error">{error}</small> : null }

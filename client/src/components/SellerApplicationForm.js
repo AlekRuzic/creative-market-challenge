@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../App.scss';
+import axios from 'axios';
 
 import SellerApplicationStep1 from './SellerApplicationStep1';
 import SellerApplicationStep2 from './SellerApplicationStep2';
@@ -16,7 +17,7 @@ const SellerApplicationForm = () => {
   const [portfolioLink, setPortfolioLink] = useState('')
   const [authoredConfirmation, setAuthoredConfirmation] = useState(false)
   const [hasOnlineStore, setHasOnlineStore] = useState(false)
-  const [onlineStores, setOnlineStores] = useState([])
+  const [onlineStores, setOnlineStores] = useState('')
 
   // Step 2 State
   const [perspectiveOnQuality, setPerspectiveOnQuality] = useState(null)
@@ -42,26 +43,46 @@ const SellerApplicationForm = () => {
         setStep(2)
       }
     } else if (number === 3) {
-      console.log(firstName)
-      console.log(lastName)
-      console.log('category: ' + shopCategory)
-      console.log(portfolioLink)
-      console.log('authored Conf: ' + authoredConfirmation)
-      console.log('has store: ' + hasOnlineStore)
-      console.log('stores: ' + onlineStores)
-
-      console.log(perspectiveOnQuality)
-      console.log(sellerExperienceLevel)
-      console.log(businessMarketingUnderstanding)
-
       perspectiveOnQuality === null ? setPerspectiveOnQualityError('Please select an option') : setPerspectiveOnQualityError('')
       sellerExperienceLevel === null ? setSellerExperienceLevelError('Please select an option') : setSellerExperienceLevelError('')
       businessMarketingUnderstanding === null ? setBusinessMarketingUnderstandingError('Please select an option') : setBusinessMarketingUnderstandingError('')
       if(perspectiveOnQuality !== null && sellerExperienceLevel !== null && businessMarketingUnderstanding !== null) {
-        setStep(3)
+        submitApplication();
       }
     }
-  } 
+  }
+
+  function submitApplication() {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+
+    // Make an array of URLs out of whatever the user put in the textarea
+    const onlineStoresArray = onlineStores.replace(/,\s+/g,",").split(/[\n,\s+]/)
+
+    const body = JSON.stringify({
+      firstName,
+      lastName,
+      shopCategory,
+      portfolioLink,
+      onlineStoresArray,
+      perspectiveOnQuality,
+      sellerExperienceLevel,
+      businessMarketingUnderstanding
+    })
+
+    axios.post('/sellerapplication', body, config)
+    .then(response => {
+      console.log(response)
+      setStep(3)
+    })
+    .catch(err => {
+      console.log(err)
+      alert('Something went wrong when submitting your application, please try again.')
+    })
+  }
 
   return (
     <div>

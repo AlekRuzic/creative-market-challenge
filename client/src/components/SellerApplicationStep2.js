@@ -13,24 +13,24 @@ const SellerApplicationStep2 = ({
 }) => {
 
   const perspectiveOnQualityOptions = [
-    { value: 'quality5', label: "I don't care what it takes, my products are the highest quality possible" },
-    { value: 'quality4', label: 'I put in enough effort to make my product pretty high quality, but at some point my time is better spent elsewhere' },
-    { value: 'quality3', label: 'I try to get quality products out quickly, even if I need to take a shortcut now and then' },
-    { value: 'quality2', label: 'I spend the minimum amount of time & effort it takes to create products that are acceptable quality' },
-    { value: 'quality1', label: 'Quantity is more important to me than quality' },
+    { value: '5', label: "I don't care what it takes, my products are the highest quality possible" },
+    { value: '4', label: 'I put in enough effort to make my product pretty high quality, but at some point my time is better spent elsewhere' },
+    { value: '3', label: 'I try to get quality products out quickly, even if I need to take a shortcut now and then' },
+    { value: '2', label: 'I spend the minimum amount of time & effort it takes to create products that are acceptable quality' },
+    { value: '1', label: 'Quantity is more important to me than quality' },
   ]
   const sellerExperienceLevelOptions = [
-    { value: 'experience5', label: 'I sell on multiple marketplaces and through my own website' },
-    { value: 'experience5', label: 'I have experience selling through only my own website' },
-    { value: 'experience5', label: 'I have experience selling through multiple marketplaces' },
-    { value: 'experience5', label: 'I have experience selling through one online marketplace' },
-    { value: 'experience5', label: "I'm new to selling creative products online" }
+    { value: '5', label: 'I sell on multiple marketplaces and through my own website' },
+    { value: '4', label: 'I have experience selling through only my own website' },
+    { value: '3', label: 'I have experience selling through multiple marketplaces' },
+    { value: '2', label: 'I have experience selling through one online marketplace' },
+    { value: '1', label: "I'm new to selling creative products online" }
   ]
   const businessMarketingUnderstandingOptions = [
-    { value: 'understanding4', label: "I have an extensive background in business and/or marketing" },
-    { value: 'understanding4', label: "I'm familiar with some skills & techniques, but I'm not sure how to apply them when selling my creative work" },
-    { value: 'understanding4', label: "I'm vaguely aware of basic business & marketing concepts" },
-    { value: 'understanding4', label: "I'm not interested in understanding business & marketing" },
+    { value: '4', label: "I have an extensive background in business and/or marketing" },
+    { value: '3', label: "I'm familiar with some skills & techniques, but I'm not sure how to apply them when selling my creative work" },
+    { value: '2', label: "I'm vaguely aware of basic business & marketing concepts" },
+    { value: '1', label: "I'm not interested in understanding business & marketing" },
   ]
 
   return (
