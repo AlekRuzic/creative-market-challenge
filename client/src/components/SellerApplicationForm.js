@@ -60,7 +60,7 @@ const SellerApplicationForm = () => {
     }
 
     // Make an array of URLs out of whatever the user put in the textarea
-    const onlineStoresArray = onlineStores.replace(/,\s+/g,",").split(/[\n,\s+]/)
+    const onlineStoresArray = onlineStores === '' ? '' : onlineStores.replace(/,\s+/g,",").split(/[\n,\s+]/)
 
     const body = JSON.stringify({
       firstName,

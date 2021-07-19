@@ -32,6 +32,8 @@ app.post('/sellerapplication', (req, res) => {
       businessMarketingUnderstanding 
     } = req.body;
   
+    console.log(req.body);
+    
     db.SellerApplication.create({
       firstName, 
       lastName, 

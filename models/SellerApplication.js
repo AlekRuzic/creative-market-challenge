@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
     },
     onlineStores: {
-      type: DataTypes.ARRAY(DataTypes.DECIMAL)
+      type: DataTypes.JSON
     },
     perspectiveOnQuality: {
       type: DataTypes.INTEGER,
